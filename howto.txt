@@ -17,3 +17,53 @@ Form validation can be implemented by setting the value of the disabled attribut
 
 The .prevent modifier calls .preventDefault() which prevents the default behavior of the browser of refreshing the page when the form is submitted.
     <form v-on:submit.prevent="submitFormFunction"></form>
+
+<span v-bind:class="{ unread: hasNotifications }">Notifications</span>
+
+In this example, we are using the v-bind:class directive to dynamically add a class called unread to a “Notifications” <span> element if the computed property hasNotifications returns true.
+
+v-bind:class takes an object as its value — the keys of this object are class names and the values are Vue app properties that return a truthy or falsy value. If the value is truthy, the class will be added to the element — otherwise it will not be added. 
+
+v-bind:class can take an array as its value.
+
+This array can take class objects as its contents and will apply the classes to the element in the order of the class objects in the array. However, this array can also take one other type of element.
+
+While class objects are good for conditionally adding classes to elements, sometimes we need to just add a class to an element regardless of conditions. When this is the case, you can add the class name to the array and it will always be applied to the element. These class names must be stored as properties on your Vue app.
+
+<span v-bind:class="[{ unread: hasNotifications }, menuItemClass]">Notifications</span>
+
+const app = new Vue({
+  data: { 
+    notifications: [ ... ],
+    menuItemClass: 'menu-item'
+  },
+  computed: {
+    hasNotifications: function() {
+      return notifications.length > 0;
+    }
+  }
+}
+
+.menu-item {
+  font-size: 12px;
+}
+ 
+.unread {
+  background-color: blue;
+}
+
+CSS might look like this:
+    input.invalid {
+    background-color: #ffeded;
+    border-color: #da5252;
+    }
+While app.js looks like this:
+    computed...
+        emailClasses: function() {
+            return {
+                touched: this.email.length !== 0,
+                invalid: this.email && !this.emailIsValid
+            };
+        }
+While index.html looks like this:
+    <input type="text" id="email" v-model.trim="email" v-bind:class=" [requiredFieldClass, emailClasses]"/>

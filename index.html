@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vue Practice</title>
     <link rel="stylesheet" href="style.css" >
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14" defer></script>
     <script src="./js/app.js" defer></script>
   </head>
   <body>
@@ -14,35 +14,86 @@
         <div class="box">
             
             <form @reset="resetAll">
-                <h1> Welcome, Warlock </h1>
-                <span>First Name: </span>
+                <h1 class="form--welcome" > Welcome to the Rebuy & Dragons ID Badge Creator, Adventurer </h1>
+                <label for="firstName">First Name: </label>
                 <input v-model.lazy="firstName" />
-                <span>Last Name: </span>
+                <br />
+                <label for="lastName">Last Name: </label>
                 <input v-model.lazy="lastName" />
-                <span>Patron: </span>
-                <input v-model.lazy="patron" />
-                <span>Years warlocking: </span>
-                <input v-model.number="yearsWarlocking" />
+                <br />
 
-                <input type="radio" id="feminine" name="picSelect" v-model="picSelect" value="feminine" />
-                <input type="radio" id="masculine" name="picSelect" v-model="picSelect" value="masculine" />
+                <label for="level">Level: </label>
+                <input class="levelInput" v-model.laz.number="level" />
+
+                <label for="race">Race: </label>
+                <input class="classInput" v-model.lazy="race" />
+
+                <label for="charClass">Class: </label>
+                <select v-model="charClass">
+                  <option>--Select--</option>
+                  <option>Warlock</option>
+                  <option>Bard</option>
+                  <option>Warrior</option>
+                  <option>Ranger</option>
+                  <option>Mage</option>
+                  <option>Cleric</option>
+                  <option>Barbarian</option>
+                </select>
+
+                <br/>
+                <span>Alignment:</span>
+                <input type="radio" id="Good" name="alignment" v-model="alignment" value="Good" />
+                <label for="Good">
+                  Good
+                </label>
+                <input type="radio" id="Neutral" name="alignment" v-model="alignment" value="Neutral" />
+                <label for="Neutral">
+                  Neutral
+                </label>
+                <input type="radio" id="Evil" name="alignment" v-model="alignment" value="Evil" />
+                <label for="Evil">
+                  Evil
+                </label>
+
+                <br />
+
+                <span>Id Photo:</span>
+                <input type="radio" id="feminineCaster" name="picSelect" v-model="picSelect" value="feminineCaster" />
+                <label for="feminineCaster">
+                  <img v-bind:class="[tinyPicturesClass]" :src="femmePic" />
+                </label>
                 
-                <button v-on:click="resetYears">Reset Years</button>
-                <button type="reset">Reset All</button>
-            </form>
-            
-            <h3>{{ thankYouText }}</h3>
+                <input type="radio" id="masculineCaster" name="picSelect" v-model="picSelect" value="masculineCaster" />
+                <label for="masculineCaster">
+                  <img v-bind:class="[tinyPicturesClass]" :src="fellaPic" />
+                </label>
+                
+                <input type="radio" id="feminineTough" name="picSelect" v-model="picSelect" value="feminineTough" />
+                <label for="feminineTough">
+                  <img v-bind:class="[tinyPicturesClass]" :src="toughGal" />
+                </label>
+                
+                <input type="radio" id="masculineTough" name="picSelect" v-model="picSelect" value="masculineTough" />
+                <label for="masculineTough">
+                  <img v-bind:class="[tinyPicturesClass]" :src="toughGuy" />
+                </label>
 
-            <h3>{{ specialMessage }}</h3>
+                <br />                
+                <button class="form--resetBtn" type="reset">Reset All</button>
+            </form>
 
             <div class="idCard">
-                <img :src="imgSrc" alt="Feminine Warlock" id="idPicture" />
+                <img :src="imgSrc" alt="Character Representation" id="idPicture" />
                 <div class="idText">
                     <h2 class="idText--name" >{{ fullName }}</h2>
-                    <h2 class="idText--patron" >Patron: {{ patron }}</h2>
-                    <h3 class="idText--years" >Years of Service: {{ yearsWarlocking }}</h3>
-                </div>
-                
+                    <h3 class="idText--stats" >Level {{ level }} {{ race }} {{ charClass }}</h3>
+                    <h3 class="idText--stats" >Alignment: {{ alignment }} </h3>
+                  </div>
+                  <div class="idCard--flexGrow">
+
+                  </div>
+
+                  <img class="idCard--rebuyImg" src="./images/rebuy.png" />
             </div>
         </div>
         

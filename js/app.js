@@ -3,84 +3,48 @@ const app = new Vue({
     data: {
         firstName: '',
         lastName: '',
-        patron: '',
-        yearsWarlocking: 0,
-        picSelect: 'feminine'
+        level: 1,
+        race: 'Human',
+        charClass: 'Warrior',
+        alignment: "Good",
+        picSelect: 'feminineCaster',
+        femmePic: './images/femmelock.png',
+        fellaPic: './images/boylock.png',
+        toughGuy: './images/toughguy.png',
+        toughGal: './images/toughtgal.png',
+        tinyPicturesClass: "tinyPicture"
     },
     computed: {
-        fealtyLevel: {
-            get: function() {
-                if (this.yearsWarlocking < 5) {
-                    return 'Bronze'
-                } else if (this.yearsWarlocking < 10) {
-                    return 'Silver'
-                } else {
-                    return 'Diamond'
-                }
-            },
-            set: function(newFealtyLevel) {
-                if (newFealtyLevel == 'Bronze') {
-                    this.yearsWarlocking = 0
-                } else if (newFealtyLevel == 'Silver') {
-                    this.yearsWarlocking = 5
-                } else if (newFealtyLevel == 'Diamond') {
-                    this.yearsWarlocking = 10
-                }
-            }
-        },
         fullName: function() {
             if (this.firstName && this.lastName) {
                 return this.firstName + ' ' + this.lastName
             } else if (this.firstName || this.lastName) {
                 return this.firstName || this.lastName
             } else {
-                return "Accursed One"
+                return "Adventurer"
             }
-        },
-        specialMessage: function() {
-            if (this.yearsWarlocking === 666) {
-                return "Congratulations on your 666th year of fealty!"
-            } else {
-                return "Thank you for your fealty."
-            }
-        },
-        thankYouText: function() {
-            let yearsText = ""
-            let patronThanksText = ""
-            if (this.yearsWarlocking) {
-                yearsText = ` for ${this.yearsWarlocking} years`
-            }
-            if (this.patron) {
-                patronThanksText = ` ${this.patron} thanks you for your fealty.`
-            }
-            return `Thank you for being a warlock${yearsText}.${patronThanksText}`
         },
         imgSrc: function() {
-            if (this.picSelect === 'feminine') {
-                return './images/femmelock.png'
-            } else if (this.picSelect === 'masculine') {
-                return './images/boylock.png'
+            if (this.picSelect === 'feminineCaster') {
+                return this.femmePic
+            } else if (this.picSelect === 'masculineCaster') {
+                return this.fellaPic
+            } else if (this.picSelect === 'masculineTough') {
+                return this.toughGuy
+            } else if (this.picSelect === 'feminineTough') {
+                return this.toughGal
             }
         }
 
     },
-    // watch: {
-    //     yearsWarlocking: function(newYearCount, oldYearCount) {
-    //         if (newYearCount == 666) {
-    //             this.specialMessage = "Congratulations on the 666th anniversary of your unholy union!"
-    //         }
-    //     }
-    // },
     methods: {
         resetAll: function() {
             this.firstName = '';
             this.lastName = '';
-            this.patron = '';
-            this.yearsWarlocking = 0;
-            this.picSelect = 'feminine'
-        },
-        resetYears: function() {
-            this.yearsWarlocking = 0
+            this.level = 1;
+            this.picSelect = 'feminineCaster';
+            this.race = 'Human';
+            this.charClass = "Warrior"
         }
     }
     

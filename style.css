@@ -4,17 +4,53 @@
 }
 
 #app {
-    width: 100%
+    width: 100%;
+}
+body {
+    background-image: url('./images/background.jpg');
+    background-size: 40%;
 }
 
 .box {
     width: 300px;
     margin:  auto;
-    border-radius: 3px;
+    border-radius: 10px;
     padding: 10px;
+    background-color: rgba(255, 255, 255, 0.89);
+}
+form {
+    padding: 100px 20px;
+    text-align: center;
+
+}
+.form--welcome {
+    margin: 0px 0px 15px;
+}
+.form--resetBtn {
+    padding: 20px;
+    margin-top: 30px;
+    background-color: rgb(15, 14, 14);
+    color: aliceblue;
+    border: none;
+    font-size: 18px;
+    border-radius: 10px;
+}
+.levelInput {
+    width: 30px
+}
+.classInput {
+    width: 60px
+}
+.tinyPicture {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    transform: translate(0%, 25%)
 }
 
 .idCard {
+    display: flex;
+    flex-direction: column;
     background-image: url('./images/idcardbackground.png');
     background-size: cover;
     margin: 20px auto;
@@ -22,7 +58,7 @@
     border-radius: 4px;
     padding: 30px 15px 0px;
     width: 300px;
-    min-height: 500px;
+    height: 500px;
 }
 #idPicture {
     height: 200px;
@@ -34,25 +70,36 @@
 }
 .idText {
     text-align: center;
+    margin: 15px 0;
 }
 .idText--name {
     font-size: 30px;
 }
+.idCard--flexGrow {
+    flex-grow: 1;
+}
+.idCard--rebuyImg {
+    width: 100%;
+    margin-bottom: 10px;
+    /* flex-grow: 1 */
+}
 
 @media screen and (min-width: 800px) {
     .box {
-        width: 500px;
+        width: 700px;
         margin: 0px auto;
         position: absolute;
         /* top: 50%; */
         left: 50%;
         transform: translate(-50%, 10%);
+        display: grid;
+        grid-template-columns: 3fr 1fr;
     }
 }
 
 @media screen and (min-width: 1200px) {
     .box {
-        width: 600px;
+        width: 800px;
 
     }
 }
