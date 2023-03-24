@@ -12,9 +12,25 @@ const app = new Vue({
         fellaPic: './images/boylock.png',
         toughGuy: './images/toughguy.png',
         toughGal: './images/toughtgal.png',
-        tinyPicturesClass: "tinyPicture"
+        tinyPicturesClass: "tinyPicture",
+        formLineClass: 'formLine',
+        goodGlow: 'glow',
+
     },
     computed: {
+        glowClass: function() {
+            return {
+                good: this.alignment === "Good",
+                bad: this.alignment === "Evil"
+            }
+        },
+        welcomeName: function() {
+            if ( this.firstName ){
+                return this.firstName
+            } else {
+                return "adventurer"
+            }
+        },
         fullName: function() {
             if (this.firstName && this.lastName) {
                 return this.firstName + ' ' + this.lastName
