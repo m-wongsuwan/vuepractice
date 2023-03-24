@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0
+}
+
+#app {
+    width: 100%
+}
+
+.box {
+    width: 300px;
+    margin:  auto;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.idCard {
+    background-image: url('./images/idcardbackground.png');
+    background-size: cover;
+    margin: 20px auto;
+    border: 2px solid black;
+    border-radius: 4px;
+    padding: 30px 15px 0px;
+    width: 300px;
+    min-height: 500px;
+}
+#idPicture {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    transform: translate(-50%, 0%);
+    margin-left: 50%;
+    margin-top: 10px;
+}
+.idText {
+    text-align: center;
+}
+.idText--name {
+    font-size: 30px;
+}
+
+@media screen and (min-width: 800px) {
+    .box {
+        width: 500px;
+        margin: 0px auto;
+        position: absolute;
+        /* top: 50%; */
+        left: 50%;
+        transform: translate(-50%, 10%);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .box {
+        width: 600px;
+
+    }
+}

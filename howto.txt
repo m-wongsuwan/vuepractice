@@ -1,0 +1,19 @@
+1. import Vue
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
+2. Create Vue instance
+    mkdir js touch app.js
+    const app = new Vue({})
+3. Attach Vue instance 
+    <div id="app"></div>
+    el: "#app"
+
+Vue data object contains dynamic data to be displayed with mustache syntax on the page
+
+Form event handlers can be added using v-on:submit and v-on:reset
+
+Modifiers can be used to add functionality to directives — most importantly preventing page reload on form submission using v-on:submit.prevent and cleaning up form field values using .number and .trim
+
+Form validation can be implemented by setting the value of the disabled attribute on a <button> to the value of a computed property using v-bind
+
+The .prevent modifier calls .preventDefault() which prevents the default behavior of the browser of refreshing the page when the form is submitted.
+    <form v-on:submit.prevent="submitFormFunction"></form>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Practice</title>
+    <link rel="stylesheet" href="style.css" >
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
+    <script src="./js/app.js" defer></script>
+  </head>
+  <body>
+    <div id="app">
+        <div class="box">
+            
+            <form @reset="resetAll">
+                <h1> Welcome, Warlock </h1>
+                <span>First Name: </span>
+                <input v-model.lazy="firstName" />
+                <span>Last Name: </span>
+                <input v-model.lazy="lastName" />
+                <span>Patron: </span>
+                <input v-model.lazy="patron" />
+                <span>Years warlocking: </span>
+                <input v-model.number="yearsWarlocking" />
+
+                <input type="radio" id="feminine" name="picSelect" v-model="picSelect" value="feminine" />
+                <input type="radio" id="masculine" name="picSelect" v-model="picSelect" value="masculine" />
+                
+                <button v-on:click="resetYears">Reset Years</button>
+                <button type="reset">Reset All</button>
+            </form>
+            
+            <h3>{{ thankYouText }}</h3>
+
+            <h3>{{ specialMessage }}</h3>
+
+            <div class="idCard">
+                <img :src="imgSrc" alt="Feminine Warlock" id="idPicture" />
+                <div class="idText">
+                    <h2 class="idText--name" >{{ fullName }}</h2>
+                    <h2 class="idText--patron" >Patron: {{ patron }}</h2>
+                    <h3 class="idText--years" >Years of Service: {{ yearsWarlocking }}</h3>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+  </body>
+</html>
