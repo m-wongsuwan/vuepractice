@@ -1,4 +1,6 @@
 ### Vue Practice App
-Hi there. You've stumbled upon a ID card generator for warlocks I'm building as I follow along with Codecademy's Vue Learn Vue.js course and apply concepts outside of their browser environment.
+Hi there. You've stumbled upon an ID card generator for DND characters who work at Rebuy Engine.
 
-I should have a live demo up before anyone would be reading this. :)
+This is my first Vue.js project after finishing the Codecademy Learn Vue.js course. I like it!
+
+## [Live Demo](https://dndbadgecreator.surge.sh/)
